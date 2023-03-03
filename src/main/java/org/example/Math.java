@@ -9,7 +9,12 @@ public class Math {
      * @return - the greatest common factor between x and y
      */
     public int GCF(int x, int y) {
-        return -1;
+        while (y != 0) {
+            int temp = y;
+            y = x % y;
+            x = temp;
+        }
+        return x;
     }
 
     /**
@@ -19,7 +24,7 @@ public class Math {
      * @return the area of the rectangle
      */
     public int areaRectangle(int length, int width) {
-        return -1;
+        return length * width;
     }
 
     /**
@@ -29,7 +34,7 @@ public class Math {
      * @return - the area of the triangle
      */
     public double areaTriangle(int base, int height) {
-        return -1;
+        return 0.5 * base * height;
     }
 
     /**
@@ -38,7 +43,7 @@ public class Math {
      * @return - the area of the circle
      */
     public double areaCircle(int radius) {
-        return -1;
+        return java.lang.Math.PI * java.lang.Math.pow(radius, 2);
     }
 
     /**
@@ -47,7 +52,15 @@ public class Math {
      * @return - the factorial of number
      */
     public int factorial(int number) {
-        return -1;
+        if(number < 0){
+            return -1;
+        }
+
+        int factorialSum = 1;
+        for(int i = 1; i <= number; i++){
+            factorialSum *= i;
+        }
+        return factorialSum;
     }
 
 

@@ -3,6 +3,7 @@ package org.example;
 import java.util.List;
 import java.util.Queue;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Collection {
     /**
@@ -11,7 +12,8 @@ public class Collection {
      * @return the largest integer
      */
     public static int findMax(List<Integer> numbers) {
-        return -1;
+        int max = numbers.stream().mapToInt(n -> n).max().orElse(-1);
+        return max;
     }
 
     /**
@@ -20,7 +22,8 @@ public class Collection {
      * @return the smallest integer
      */
     public static int findMin(List<Integer> numbers) {
-        return -1;
+        int least = numbers.stream().mapToInt(n -> n).min().orElse(-1);
+        return least;
     }
 
     /**
@@ -29,7 +32,9 @@ public class Collection {
      * @param target - the threshold by which to remove integers
      */
     public static void removeLessThan(Set<Integer> numbers, int target) {
-
+        Set<Integer> lessThanNums = numbers.stream().filter(n -> n < target).collect(Collectors.toSet());
+        numbers.removeAll(numbers);
+        numbers.addAll(lessThanNums);
     }
 
     /**
@@ -38,7 +43,9 @@ public class Collection {
      * @param target - the threshold by which to remove integers
      */
     public static void removeGreaterThan(Set<Integer> numbers, int target) {
-
+        Set<Integer> greaterThanNums = numbers.stream().filter(n -> n > target).collect(Collectors.toSet());
+        numbers.removeAll(numbers);
+        numbers.addAll(greaterThanNums);
     }
 
     /**
@@ -48,6 +55,8 @@ public class Collection {
      * @param strings - the queue of strings to mutuate
      */
     public static void removeHalf(Queue<String> strings) {
-
+        while(strings.size() != strings.size()/2){
+            strings.remove();
+        }
     }
 }
